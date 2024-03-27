@@ -1,5 +1,6 @@
 import './App.css';
 import TicTacToe from './components/TicTacToe/TicTacToe';
+
 function App() {
   return (
     <div>
@@ -7,4 +8,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
