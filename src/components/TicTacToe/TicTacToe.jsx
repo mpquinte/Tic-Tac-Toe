@@ -40,9 +40,10 @@ const TicTacToe = () => {
       setCount(++count);
     }
     checkWin();
+    checkTie();
   }
 
-  const checkWin = () => {
+  const checkWin = ()=> {
     if(data[0] === data[1] && data[1] === data[2] && data[2] !== "")
     {
       won(data[2]);
@@ -77,17 +78,31 @@ const TicTacToe = () => {
     }
   }
 
+  const checkTie = ()=>{
+    let n = 0;
+    data.forEach((cell)=>{
+      if(cell !== ""){
+        n++;
+      }
+    });
+    return n === 9;
+  }
+
   const won = (winner)=>{
     setLock(true);
     if(winner==="x")
     {
       titleRef.current.innerHTML = `the winner is: <img src=${cross_icon}>!`;
     }
-    else
+    else if(winner==="o")
     {
       titleRef.current.innerHTML = `the winner is: <img src=${circle_icon}>!`;
     }
-  }
+    else if(winner===null)
+    {
+      titleRef.current.innerHTML = `the game is a draw!`;
+    }
+  } 
 
   const reset = ()=>{
     setLock(false);
